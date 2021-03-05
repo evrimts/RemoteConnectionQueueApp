@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using RemoteConnectionQueueApp.Data;
 using RemoteConnectionQueueApp.Models;
 using System;
 using System.Collections.Generic;
@@ -15,14 +17,15 @@ namespace RemoteConnectionQueueApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            //return View();
+            return Redirect("Connections/Index");
         }
 
         public IActionResult Privacy()
@@ -35,5 +38,7 @@ namespace RemoteConnectionQueueApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

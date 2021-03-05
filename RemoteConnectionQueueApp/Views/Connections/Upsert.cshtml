@@ -1,0 +1,58 @@
+﻿@model RemoteConnectionQueueApp.Models.RemoteConnection
+
+@*<h2 class="text-info">Sunucu @(Model.Id!=0 ? "Güncelle" : "Oluştur")</h2>*@
+
+<div class="col-10">
+    <h2 class="text-info">Sunucu Oluştur</h2>
+</div>
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="MusteriAdi"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="MusteriAdi" class="form-control" />
+                <span asp-validation-for="MusteriAdi" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="SunucuIp"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="SunucuIp" class="form-control" />
+                <span asp-validation-for="SunucuIp" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="SunucuKullaniciAdi"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="SunucuKullaniciAdi" class="form-control" />
+                <span asp-validation-for="SunucuKullaniciAdi" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.Id != 0 ? "Güncelle" : "Oluştur")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Listeye Dön</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

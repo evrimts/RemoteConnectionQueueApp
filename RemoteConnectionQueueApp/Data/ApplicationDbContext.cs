@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RemoteConnectionQueueApp.Areas.Identity.Data;
+using RemoteConnectionQueueApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,8 @@ namespace RemoteConnectionQueueApp.Data
             : base(options)
         {
         }
+
+        public DbSet<RemoteConnection> RemoteConnection { get; set; }
+        public DbSet<Queue> Queue { get; set; }
     }
 }

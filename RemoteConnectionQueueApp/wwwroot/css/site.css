@@ -134,3 +134,7 @@ div.card-content {
 div.login-form-icon {
     text-align: center;
 }
+
+#DT_load tr > *:nth-child(5) {
+    display: none;
+}

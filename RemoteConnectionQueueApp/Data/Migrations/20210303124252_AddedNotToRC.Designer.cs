@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RemoteConnectionQueueApp.Data;
 
 namespace RemoteConnectionQueueApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210303124252_AddedNotToRC")]
+    partial class AddedNotToRC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,6 +248,9 @@ namespace RemoteConnectionQueueApp.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BaglantiSuresiDakika")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("BaglantiZamani")
                         .HasColumnType("datetime2");
 
@@ -258,7 +263,7 @@ namespace RemoteConnectionQueueApp.Data.Migrations
                         .HasColumnType("nvarchar(120)")
                         .HasMaxLength(120);
 
-                    b.Property<string>("Note")
+                    b.Property<string>("Not")
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 

@@ -1,0 +1,60 @@
+﻿@model RemoteConnectionQueueApp.Models.RemoteConnection
+
+
+<div class="col-10">
+    <h2 class="text-info">Sunucuya Bağlanılıyor</h2>
+</div>
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="MusteriAdi"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="MusteriAdi" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="SunucuIp"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="SunucuIp" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="SunucuKullaniciAdi"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="SunucuKullaniciAdi" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Note"></label>
+            </div>
+            <div class="col-6">
+                <textarea rows="3" asp-for="Note" class="form-control" type="text" placeholder="Not bırakabilirsiniz..."> </textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    Bağlan
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Listeye Dön</a>
+            </div>
+        </div>
+
+    </form>
+</div>
