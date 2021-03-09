@@ -4,7 +4,6 @@ var usrName = table.dataset.user;
 
 $(document).ready(function () {
     loadDataTable();
-    //console.log('Test test test');
 });
 
 function loadDataTable() {
@@ -48,9 +47,12 @@ function loadDataTable() {
                 render: function (data, type, row, meta) {
                     if (data === null) {
                         return `<div class="text-center">
-                        <a href="/connections/Connect?id=${row.id}" class='btn btn-success text-white' style='cursor:pointer; width:120px;'>
+                        <a href="/connections/Connect?id=${row.id}" class='btn btn-success text-white' style='cursor:pointer; width:120px; margin:3px;'>
                             Bağlan
                         </a >
+                        <a href="/connections/JoinQueue?id=${row.id}" class='btn btn-info text-white' style='cursor:pointer; width:120px;'>
+                            Sıra İşlemleri
+                        </a>
                         </div>`
                     } else if (data == usrName) {
                         return `<div class="text-center">

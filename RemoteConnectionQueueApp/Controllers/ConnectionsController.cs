@@ -130,6 +130,18 @@ namespace RemoteConnectionQueueApp.Controllers
                 RemoteConnection.BagliKisi = User.Identity.Name;
                 RemoteConnection.BaglantiZamani = DateTime.Now;
                 _db.RemoteConnection.Update(RemoteConnection);
+
+                //Remove if in queue
+                Queue queue = new Queue();
+
+                queue = _db.Queue.FirstOrDefault(i => i.RemoteConnectionId == RemoteConnection.Id && i.BekleyenKisi == User.Identity.Name);
+
+                if (queue != null)
+                {
+                    //User in queue. Remove.
+                    _db.Queue.Remove(queue);
+                }
+                
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
